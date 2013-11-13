@@ -15,19 +15,25 @@
 @property (assign) IBOutlet NSWindow *window;
 @property (weak) IBOutlet NSButton *recButton;
 @property (weak) IBOutlet NSTextField *timeLabel;
+@property (weak) IBOutlet NSTextField *folderLabel;
+@property (weak) IBOutlet NSTextField *fileLabel;
+
 @property (strong, nonatomic) AVAudioRecorder *audioRecorder;
 @property (weak) IBOutlet NSLevelIndicator *L_AudioLevel;
 @property (weak) IBOutlet NSLevelIndicator *R_AudioLevel;
 
-//@property (assign) NSDate *startTime;
-//@property (assign) NSTimer *recTimer;
+@property (weak) IBOutlet NSLevelIndicator *recordIndicator;
 
 - (IBAction)recButtonPressed:(id)sender;
+- (IBAction)folderButtonPressed:(id)sender;
 
-- (BOOL)setupRecorder;
-- (BOOL)loadSound;
+- (void)selectSaveFolder;
+- (void)setupRecorder;
 - (void)recStart;
 - (void)recStop;
+- (void)countDownStart;
+- (void)updateCountDown;
 - (void)updateTimer;
+
 
 @end

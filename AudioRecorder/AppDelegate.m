@@ -14,37 +14,84 @@
 @implementation AppDelegate {
     NSDate *startTime;
     NSTimer *recTimer;
+    NSURL *saveFolder;
+    NSInteger fileName;
+    BOOL isFolderOK;
+    BOOL isRecorderSet;
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
     
-    [self setupRecorder];
+    //[self setupRecorder];
     
-    [self.timeLabel setFloatValue:0.0];
     [self.timeLabel setStringValue:@"00:00:0"];
+    [self.recordIndicator setIntegerValue:0];
+    fileName = 1;
+    [self.fileLabel setIntegerValue:fileName];
     
-    if([self loadSound]){
-        NSLog(@"Sound Loaded");
-    }
-    else{
-        NSLog(@"Sound Not Loaded");
-    }
+    isFolderOK = NO;
+    isRecorderSet = NO;
+    [self.recButton setEnabled:NO];
 }
 
 - (IBAction)recButtonPressed:(id)sender {
-    [self recStart];
+    [self countDownStart];
 }
 
-- (BOOL)setupRecorder{
+- (IBAction)folderButtonPressed:(id)sender {
+    [self selectSaveFolder];
+
+}
+
+- (void)selectSaveFolder{
+    NSOpenPanel* panel = [NSOpenPanel openPanel];
+    [panel setCanChooseFiles:NO];
+    [panel setCanChooseDirectories:YES];
+    [panel setCanCreateDirectories:YES];
     
+    [panel beginSheetModalForWindow:self.window completionHandler:^(NSInteger result){
+        if (result == NSFileHandlingPanelOKButton) {
+            NSArray* urls = [panel URLs];
+            for (NSURL *url in urls) {
+                //here how to judge the url is a directory or a file
+                saveFolder = url;
+                if([saveFolder isFileURL]){
+                    NSLog([saveFolder path]);
+                    BOOL isDir = NO;
+                    [[NSFileManager defaultManager] fileExistsAtPath:[saveFolder path] isDirectory:&isDir];
+                    if (isDir) {
+                        NSLog(@"Directory");
+                        [self.folderLabel setStringValue:[saveFolder path]];
+                        isFolderOK = YES;
+                        [self setupRecorder];
+                        [self.recButton setEnabled:YES];
+                    }
+                    else{
+                        NSLog(@"Not Directory");
+                        isFolderOK = NO;
+                    }
+
+                }
+                else{
+                    NSLog(@"Not File URL");
+                    isFolderOK = NO;
+                }
+           }
+        }
+    }];
+}
+
+- (void)setupRecorder{
+    isRecorderSet = NO;
+
     NSString *tempDir;
     NSURL *soundFile;
     NSDictionary *soundSetting;
     
-    tempDir = @"/Users/songhojun/Documents/";
-    soundFile = [NSURL fileURLWithPath: [tempDir stringByAppendingString:@"hojunb.wav"]];
+    tempDir = [saveFolder.path stringByAppendingString:@"/"];
+    soundFile = [NSURL fileURLWithPath: [[tempDir stringByAppendingString:[NSString stringWithFormat:@"%d",(int)fileName]] stringByAppendingString:@".wav"]];
     NSLog(@"soundFile: %@",soundFile);
     
     soundSetting = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -55,20 +102,16 @@
     
     self.audioRecorder = [[AVAudioRecorder alloc] initWithURL: soundFile settings: soundSetting error: nil];
     [self.audioRecorder setMeteringEnabled:YES];
-    
-    return NO;
+    isRecorderSet = YES;
 }
 
-- (BOOL)loadSound{
-    return NO;
-}
 
 - (void)recStart{
+    [self.audioRecorder record];
     [recTimer invalidate];
     startTime = [NSDate date];
     recTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(updateTimer) userInfo:nil repeats:YES];
-    [self.recButton setEnabled:NO];
-    [self.audioRecorder record];
+    [self.recordIndicator setIntegerValue:3];
     NSLog(@"Rec Started");
 }
 
@@ -77,7 +120,38 @@
     [self.recButton setEnabled:YES];
     [self.audioRecorder stop];
     NSLog(@"Rec Stopped");
+    [self.recordIndicator setIntegerValue:0];
+
+    [self.L_AudioLevel setFloatValue:[self.L_AudioLevel minValue]];
+    [self.R_AudioLevel setFloatValue:[self.R_AudioLevel minValue]];
+
+    // prepare for next 
+    fileName++;
+    [self.fileLabel setIntegerValue:fileName];
+    [self setupRecorder];
+    [self.recButton setEnabled:YES];
+    
 }
+
+- (void)countDownStart{
+    [self.recButton setEnabled:NO];
+    startTime = [NSDate date];
+    recTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateCountDown) userInfo:nil repeats:YES];
+    [self.recordIndicator setIntegerValue:1];
+
+}
+
+- (void)updateCountDown{
+    NSTimeInterval interval = [startTime timeIntervalSinceNow];
+    NSUInteger seconds = ABS((int)interval);
+    [self.recordIndicator setIntegerValue:2];
+    if (seconds > 1) {
+        NSLog(@"CountDown Done");
+        [recTimer invalidate];
+        [self recStart];
+    }
+}
+
 
 - (void)updateTimer{
     
@@ -94,10 +168,17 @@
     [self.audioRecorder updateMeters];
     [self.L_AudioLevel setFloatValue:[self.audioRecorder averagePowerForChannel:0]];
     [self.R_AudioLevel setFloatValue:[self.audioRecorder averagePowerForChannel:1]];
+//    if ([self.audioRecorder averagePowerForChannel:0] != [self.audioRecorder averagePowerForChannel:1]) {
+//        NSLog(@"difference: %f", [self.audioRecorder averagePowerForChannel:0] - [self.audioRecorder averagePowerForChannel:1]);
+//    }
     
 
     // stop the timer at 2.0 secs
-    if (seconds > 20) {
+    if (seconds == 1) {
+        [self.recordIndicator setIntegerValue:4];
+
+    }
+    if (seconds == 2) {
         [recTimer invalidate];
         [self recStop];
     }
