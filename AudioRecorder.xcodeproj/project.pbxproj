@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		67CC5B5A1833FCAD00BC7BC7 /* ARicon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 67CC5B591833FCAD00BC7BC7 /* ARicon.icns */; };
 		67E00A971833508700150013 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67E00A961833508700150013 /* Cocoa.framework */; };
 		67E00AA11833508700150013 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 67E00A9F1833508700150013 /* InfoPlist.strings */; };
 		67E00AA31833508700150013 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 67E00AA21833508700150013 /* main.m */; };
@@ -19,7 +20,6 @@
 		67E00AC11833508800150013 /* AudioRecorderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67E00AC01833508800150013 /* AudioRecorderTests.m */; };
 		67E00ACB183350A200150013 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67E00ACA183350A200150013 /* AVFoundation.framework */; };
 		67E00ACD1833752900150013 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67E00ACC1833752900150013 /* CoreAudio.framework */; };
-		67E00AD51833ED0200150013 /* icon.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 67E00AD41833ED0200150013 /* icon.iconset */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		67CC5B591833FCAD00BC7BC7 /* ARicon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = ARicon.icns; path = ../ARicon.icns; sourceTree = "<group>"; };
 		67E00A931833508700150013 /* AudioRecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioRecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67E00A961833508700150013 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		67E00A991833508700150013 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -54,7 +55,6 @@
 		67E00AC01833508800150013 /* AudioRecorderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioRecorderTests.m; sourceTree = "<group>"; };
 		67E00ACA183350A200150013 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		67E00ACC1833752900150013 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
-		67E00AD41833ED0200150013 /* icon.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; name = icon.iconset; path = ../icon.iconset; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,7 +135,7 @@
 		67E00A9D1833508700150013 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				67E00AD41833ED0200150013 /* icon.iconset */,
+				67CC5B591833FCAD00BC7BC7 /* ARicon.icns */,
 				67E00A9E1833508700150013 /* AudioRecorder-Info.plist */,
 				67E00A9F1833508700150013 /* InfoPlist.strings */,
 				67E00AA21833508700150013 /* main.m */,
@@ -238,7 +238,7 @@
 				67E00AA11833508700150013 /* InfoPlist.strings in Resources */,
 				67E00AA71833508700150013 /* Credits.rtf in Resources */,
 				67E00AAD1833508700150013 /* MainMenu.xib in Resources */,
-				67E00AD51833ED0200150013 /* icon.iconset in Resources */,
+				67CC5B5A1833FCAD00BC7BC7 /* ARicon.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,6 +464,7 @@
 				67E00AC61833508800150013 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		67E00AC71833508800150013 /* Build configuration list for PBXNativeTarget "AudioRecorderTests" */ = {
 			isa = XCConfigurationList;
@@ -472,6 +473,7 @@
 				67E00AC91833508800150013 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
