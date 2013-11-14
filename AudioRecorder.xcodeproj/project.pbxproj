@@ -10,6 +10,7 @@
 		67C2CBE0183401E800EE7929 /* rec.png in Resources */ = {isa = PBXBuildFile; fileRef = 67C2CBDF183401E800EE7929 /* rec.png */; };
 		67C2CBE21834026200EE7929 /* recstandby.png in Resources */ = {isa = PBXBuildFile; fileRef = 67C2CBE11834026200EE7929 /* recstandby.png */; };
 		67CC5B5A1833FCAD00BC7BC7 /* ARicon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 67CC5B591833FCAD00BC7BC7 /* ARicon.icns */; };
+		67D54A4C1834EBB700CE4627 /* RecordingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67D54A4B1834EBB700CE4627 /* RecordingView.m */; };
 		67E00A971833508700150013 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67E00A961833508700150013 /* Cocoa.framework */; };
 		67E00AA11833508700150013 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 67E00A9F1833508700150013 /* InfoPlist.strings */; };
 		67E00AA31833508700150013 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 67E00AA21833508700150013 /* main.m */; };
@@ -38,6 +39,8 @@
 		67C2CBDF183401E800EE7929 /* rec.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rec.png; sourceTree = "<group>"; };
 		67C2CBE11834026200EE7929 /* recstandby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recstandby.png; sourceTree = "<group>"; };
 		67CC5B591833FCAD00BC7BC7 /* ARicon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = ARicon.icns; path = ../ARicon.icns; sourceTree = "<group>"; };
+		67D54A4A1834EBB700CE4627 /* RecordingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordingView.h; sourceTree = "<group>"; };
+		67D54A4B1834EBB700CE4627 /* RecordingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordingView.m; sourceTree = "<group>"; };
 		67E00A931833508700150013 /* AudioRecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioRecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67E00A961833508700150013 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		67E00A991833508700150013 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -132,6 +135,8 @@
 				67E00AA91833508700150013 /* AppDelegate.m */,
 				67E00AAB1833508700150013 /* MainMenu.xib */,
 				67E00A9D1833508700150013 /* Supporting Files */,
+				67D54A4A1834EBB700CE4627 /* RecordingView.h */,
+				67D54A4B1834EBB700CE4627 /* RecordingView.m */,
 			);
 			path = AudioRecorder;
 			sourceTree = "<group>";
@@ -283,6 +288,7 @@
 			files = (
 				67E00AA31833508700150013 /* main.m in Sources */,
 				67E00AAA1833508700150013 /* AppDelegate.m in Sources */,
+				67D54A4C1834EBB700CE4627 /* RecordingView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,6 +10,7 @@
 #import <AVFoundation/AVAudioRecorder.h>
 #import <AVFoundation/AVAudioSettings.h>
 #import <CoreAudio/CoreAudio.h>
+#import "RecordingView.h"
 
 @implementation AppDelegate {
     NSDate *startTime;
@@ -26,6 +27,11 @@
     // Insert code here to initialize your application
     
     //[self setupRecorder];
+    
+    RecordingView *aView = [[RecordingView alloc] initWithFrame:[self.drawView bounds]];
+    self.recordingView = aView;
+    [self.drawView addSubview:self.recordingView];
+    
     
     [self.timeLabel setStringValue:@"00:00:0"];
     [self.recordIndicator setIntegerValue:0];
@@ -69,6 +75,8 @@
                         [self.folderLabel setStringValue:[saveFolder path]];
                         
                         [self setupRecorder];
+                        [self.audioRecorder prepareToRecord];
+                        
                         [self.recButton setEnabled:YES];
                     }
                     else{

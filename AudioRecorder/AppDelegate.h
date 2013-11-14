@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 @class AVAudioRecorder;
+@class RecordingView;
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
@@ -23,6 +24,9 @@
 @property (weak) IBOutlet NSLevelIndicator *R_AudioLevel;
 
 @property (weak) IBOutlet NSLevelIndicator *recordIndicator;
+@property (weak) IBOutlet NSView *drawView;
+
+@property (strong) RecordingView *recordingView;
 
 - (IBAction)recButtonPressed:(id)sender;
 - (IBAction)folderButtonPressed:(id)sender;
@@ -34,6 +38,7 @@
 - (void)countDownStart;
 - (void)updateCountDown;
 - (void)updateTimer;
+
 
 
 @end
