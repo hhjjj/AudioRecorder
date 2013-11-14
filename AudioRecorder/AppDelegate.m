@@ -15,6 +15,7 @@
     NSDate *startTime;
     NSTimer *recTimer;
     NSURL *saveFolder;
+    NSString *saveFolderPath;
     NSInteger fileName;
     BOOL isFolderOK;
     BOOL isRecorderSet;
@@ -63,8 +64,10 @@
                     [[NSFileManager defaultManager] fileExistsAtPath:[saveFolder path] isDirectory:&isDir];
                     if (isDir) {
                         NSLog(@"Directory");
-                        [self.folderLabel setStringValue:[saveFolder path]];
                         isFolderOK = YES;
+                        saveFolderPath = [saveFolder.path stringByAppendingString:@"/temp.wav"];
+                        [self.folderLabel setStringValue:[saveFolder path]];
+                        
                         [self setupRecorder];
                         [self.recButton setEnabled:YES];
                     }
@@ -86,12 +89,13 @@
 - (void)setupRecorder{
     isRecorderSet = NO;
 
-    NSString *tempDir;
+    //NSString *tempDir;
     NSURL *soundFile;
     NSDictionary *soundSetting;
     
-    tempDir = [saveFolder.path stringByAppendingString:@"/"];
-    soundFile = [NSURL fileURLWithPath: [[tempDir stringByAppendingString:[NSString stringWithFormat:@"%d",(int)fileName]] stringByAppendingString:@".wav"]];
+    //tempDir = [saveFolder.path stringByAppendingString:@"/"];
+//    soundFile = [NSURL fileURLWithPath: [[tempDir stringByAppendingString:[NSString stringWithFormat:@"%d",(int)fileName]] stringByAppendingString:@".wav"]];
+    soundFile = [NSURL fileURLWithPath:saveFolderPath];
     NSLog(@"soundFile: %@",soundFile);
     
     soundSetting = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -107,6 +111,7 @@
 
 
 - (void)recStart{
+    [self.recButton setImage:[self.recButton alternateImage]];
     [self.audioRecorder record];
     [recTimer invalidate];
     startTime = [NSDate date];
@@ -125,9 +130,18 @@
     [self.L_AudioLevel setFloatValue:[self.L_AudioLevel minValue]];
     [self.R_AudioLevel setFloatValue:[self.R_AudioLevel minValue]];
 
-    // prepare for next 
+    [self.recButton setImage:[NSImage imageNamed:@"recstandby.png"]];
+    
+    NSString *newPath = [[saveFolderPath stringByDeletingLastPathComponent] stringByAppendingPathComponent:[NSString stringWithFormat:@"%d.wav",(int)fileName]];
+    NSLog(newPath);
+    [[NSFileManager defaultManager] moveItemAtPath:saveFolderPath toPath:newPath error:nil];    
+    
+    // prepare for next
     fileName++;
     [self.fileLabel setIntegerValue:fileName];
+    
+    
+    
     [self setupRecorder];
     [self.recButton setEnabled:YES];
     

@@ -298,11 +298,14 @@
 								<reference key="NSControlView" ref="808314982"/>
 								<int key="NSButtonFlags">-1236516864</int>
 								<int key="NSButtonFlags2">134</int>
-								<object class="NSCustomResource" key="NSNormalImage" id="38894647">
+								<object class="NSCustomResource" key="NSNormalImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">recstandby</string>
+								</object>
+								<object class="NSCustomResource" key="NSAlternateImage">
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">rec</string>
 								</object>
-								<reference key="NSAlternateImage" ref="38894647"/>
 								<string key="NSAlternateContents"/>
 								<string key="NSKeyEquivalent"/>
 								<int key="NSPeriodicDelay">400</int>
@@ -5151,6 +5154,7 @@
 			<string key="NSMenuCheckmark">{11, 11}</string>
 			<string key="NSMenuMixedState">{10, 3}</string>
 			<string key="rec">{50, 50}</string>
+			<string key="recstandby">{50, 50}</string>
 		</dictionary>
 		<bool key="IBDocument.UseAutolayout">YES</bool>
 	</data>
