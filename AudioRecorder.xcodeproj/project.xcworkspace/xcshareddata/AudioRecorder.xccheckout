@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>B9DC555D-CF06-49E6-9A98-8ED1931F866E</string>
+	<key>IDESourceControlProjectName</key>
+	<string>AudioRecorder</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>78997ABF-6B68-42BE-B347-D8C060727012</key>
+		<string>https://github.com/hhjjj/AudioRecorder.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>AudioRecorder.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>78997ABF-6B68-42BE-B347-D8C060727012</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/hhjjj/AudioRecorder.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>78997ABF-6B68-42BE-B347-D8C060727012</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>78997ABF-6B68-42BE-B347-D8C060727012</string>
+			<key>IDESourceControlWCCName</key>
+			<string>AudioRecorder</string>
+		</dict>
+	</array>
+</dict>
+</plist>
