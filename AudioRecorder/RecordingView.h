@@ -10,4 +10,5 @@
 
 @interface RecordingView : NSView
 
+
 @end

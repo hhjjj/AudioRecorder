@@ -24,7 +24,15 @@
 {
     // Drawing code here.
     [[NSColor whiteColor] set];
-    [NSBezierPath fillRect:[self bounds]];
+    [NSBezierPath fillRect:dirtyRect];
+    [[NSColor redColor] set];
+    //[NSBezierPath fillRect:NSMakeRect(10, 10, 30, 30)];
+    
+     NSBezierPath* thePath = [NSBezierPath bezierPath];
+    
+    [thePath appendBezierPathWithOvalInRect:NSMakeRect(10, 10, 30, 30)];
+    [thePath fill];
+    //NSRect *rect = NSMakeRect(10, 10, 30, 30);
 }
 
 @end
